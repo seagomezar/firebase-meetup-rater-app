@@ -18,15 +18,27 @@
     var quien = document.getElementById('quien');
     var cuanto = document.getElementById('cuanto');
     var enviar = document.getElementById('enviar');
+
+    // Elemento de alerta
+    var alerta = document.getElementById('alert');
     
 
     myDatabase.on('value', function(snap) {
         console.log('Estoy obteniendo todo!!!', snap.val());
-        myData.innerHTML = JSON.stringify(snap.val(), null, 3);
+        // myData.innerHTML = JSON.stringify(snap.val(), null, 3);
     });
 
     myDatabase.on('child_added', function(snap) {
         console.log('Alguien añadió un dato', snap.val());
+        var rate = snap.val();
+        alerta.innerHTML = '<strong>' + rate.quien + '</strong> ha calificado este meetup con: <strong>' + rate.cuanto + '</strong> puntos';
+        if(rate.cuanto <= 5) {
+            alerta.setAttribute('class', 'alert alert-danger');
+        } else if(rate.cuanto > 5 && rate.cuanto <= 7) {
+            alerta.setAttribute('class', 'alert alert-warning');
+        } else if(rate.cuanto > 7) {
+            alerta.setAttribute('class', 'alert alert-success');
+        }
     });
     myDatabase.on('child_removed', function(snap) {
         console.log('Alguien removió un dato', snap.val());
