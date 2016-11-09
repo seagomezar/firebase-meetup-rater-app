@@ -40,7 +40,12 @@
         console.log('quien', quien.value);
         console.log('cuanto', cuanto.value);
 
-        
+        // Creemos un objeto con esos datos
+
+        var newRate = {quien: quien.value, cuanto: cuanto.value};
+
+        myDatabase.push(newRate);
+
     });
 
 
