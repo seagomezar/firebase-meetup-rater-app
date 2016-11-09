@@ -8,8 +8,17 @@
     };
     firebase.initializeApp(config);
 
+    // Mi base de datos
     var myDatabase = firebase.database().ref().child('rates');
+
+    // Mi pre tag en el index
     var myData = document.getElementById('myData');
+
+    // Mis elementos del formulario
+    var quien = document.getElementById('quien');
+    var cuanto = document.getElementById('cuanto');
+    var enviar = document.getElementById('enviar');
+    
 
     myDatabase.on('value', function(snap) {
         console.log('Estoy obteniendo todo!!!', snap.val());
@@ -24,6 +33,14 @@
     });
     myDatabase.on('child_changed', function(snap) {
         console.log('Alguien cambió un dato', snap.val());
+    });
+
+    enviar.addEventListener('click', function(){
+        
+        console.log('quien', quien.value);
+        console.log('cuanto', cuanto.value);
+
+        
     });
 
 
