@@ -3,8 +3,8 @@
         apiKey: "",
         authDomain: "superapp-88577.firebaseapp.com",
         databaseURL: "https://superapp-88577.firebaseio.com",
-        storageBucket: "superapp-88577.appspot.com",
-        messagingSenderId: "294220277117"
+        storageBucket: "",
+        messagingSenderId: ""
     };
     firebase.initializeApp(config);
 
