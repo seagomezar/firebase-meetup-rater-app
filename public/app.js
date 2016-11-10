@@ -21,11 +21,14 @@
 
     // Elemento de alerta
     var alerta = document.getElementById('alert');
-    
+
+    // El consolidado
+    var consolidado = 0;
+    var counter = 0;
 
     myDatabase.on('value', function(snap) {
         console.log('Estoy obteniendo todo!!!', snap.val());
-        // myData.innerHTML = JSON.stringify(snap.val(), null, 3);
+        var todosMisRates = snap.val();
     });
 
     myDatabase.on('child_added', function(snap) {
@@ -43,7 +46,16 @@
 
         setTimeout(function() {
             alerta.hidden = true;
-        }, 3000);
+        }, 5000);
+
+        counter ++;
+
+        consolidado = consolidado + parseInt(rate.cuanto, 10);
+
+        var total = document.getElementById('total');
+
+        total.innerHTML = 'Éste meetup es un meetup de: ' + parseFloat(consolidado/counter).toFixed(2) + ' puntos. '+counter+' personas han votado.';
+
 
     });
     myDatabase.on('child_removed', function(snap) {
