@@ -39,6 +39,12 @@
         } else if(rate.cuanto > 7) {
             alerta.setAttribute('class', 'alert alert-success');
         }
+        alerta.hidden = false;
+
+        setTimeout(function() {
+            alerta.hidden = true;
+        }, 3000);
+
     });
     myDatabase.on('child_removed', function(snap) {
         console.log('Alguien removió un dato', snap.val());
