@@ -1,10 +1,10 @@
 (function () {
     var config = {
-        apiKey: "",
-        authDomain: "superapp-88577.firebaseapp.com",
-        databaseURL: "https://superapp-88577.firebaseio.com",
-        storageBucket: "superapp-88577.appspot.com",
-        messagingSenderId: "294220277117"
+        apiKey: "AIzaSyA-bw8RmdWH08iQ5UmcdtAwT_0hwrrCUBU",
+    authDomain: "superapp-88577.firebaseapp.com",
+    databaseURL: "https://superapp-88577.firebaseio.com",
+    storageBucket: "superapp-88577.appspot.com",
+    messagingSenderId: "294220277117"
     };
     firebase.initializeApp(config);
 
