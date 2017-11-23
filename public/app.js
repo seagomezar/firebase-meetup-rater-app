@@ -20,6 +20,7 @@
     var cuanto = document.getElementById('cuanto');
     var enviar = document.getElementById('enviar');
     var login = document.getElementById('login');
+    var userInfo = document.getElementById('user-info');
 
     // Elemento de alerta
     var alerta = document.getElementById('alert');
@@ -82,7 +83,20 @@
 
     login.addEventListener('click', function () {
         
-        console.log('hola bebe');
+        // Using a popup.
+        var provider = new firebase.auth.GoogleAuthProvider();
+        provider.addScope('profile');
+        provider.addScope('email');
+        firebase.auth().signInWithPopup(provider).then(function(result) {
+            // This gives you a Google Access Token.
+            var token = result.credential.accessToken;
+            // The signed-in user info.
+            var user = result.user;
+            console.log(user);
+            total.innerHTML = '<div>' + user.displayName + '</div>' + 
+                              '<div>' + user.email + '</div>' + 
+                              '<div><img width="100px" src="' + user.photoURL +'"/>';
+        });
 
     });
 
