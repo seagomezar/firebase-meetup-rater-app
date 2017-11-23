@@ -19,6 +19,7 @@
     var quien = document.getElementById('quien');
     var cuanto = document.getElementById('cuanto');
     var enviar = document.getElementById('enviar');
+    var login = document.getElementById('login');
 
     // Elemento de alerta
     var alerta = document.getElementById('alert');
@@ -76,6 +77,12 @@
         var newRate = { quien: quien.value, cuanto: cuanto.value };
 
         myDatabase.push(newRate);
+
+    });
+
+    login.addEventListener('click', function () {
+        
+        console.log('hola bebe');
 
     });
 
