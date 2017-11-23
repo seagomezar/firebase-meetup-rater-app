@@ -82,22 +82,30 @@
     });
 
     login.addEventListener('click', function () {
-        
+
         // Using a popup.
         var provider = new firebase.auth.GoogleAuthProvider();
         provider.addScope('profile');
         provider.addScope('email');
-        firebase.auth().signInWithPopup(provider).then(function(result) {
+        firebase.auth().signInWithPopup(provider).then(function (result) {
             // This gives you a Google Access Token.
             var token = result.credential.accessToken;
             // The signed-in user info.
             var user = result.user;
             console.log(user);
-            total.innerHTML = '<div>' + user.displayName + '</div>' + 
-                              '<div>' + user.email + '</div>' + 
-                              '<div><img width="100px" src="' + user.photoURL +'"/>';
+            login.style.display = 'none';
+            userInfo.style.display = 'block';
+            userInfo.innerHTML = '<div>' + user.displayName + '</div>' +
+                '<div>' + user.email + '</div>' +
+                '<div><img width="100px" src="' + user.photoURL + '"/>' +
+                '<div><button type="submit" class="btn btn-danger" id="logout"> Logout </button></div>';
+            var logout = document.getElementById('logout');
+            logout.addEventListener('click', function () {
+                firebase.auth().signOut().then(function () {
+                    userInfo.style.display = 'none';
+                    login.style.display = 'block';
+                });
+            });
         });
-
     });
-
 })();
