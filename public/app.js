@@ -95,6 +95,7 @@
             console.log(user);
             login.style.display = 'none';
             userInfo.style.display = 'block';
+            quien.value = user.displayName;
             userInfo.innerHTML = '<div>' + user.displayName + '</div>' +
                 '<div>' + user.email + '</div>' +
                 '<div><img width="100px" src="' + user.photoURL + '"/>' +
